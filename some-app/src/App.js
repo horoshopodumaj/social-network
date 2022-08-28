@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/header/Header";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/Profile";
 
 const App = () => {
