@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
 import News from "./components/news/News";
+import Music from "./components/music/Music";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                         <Route path="/dialogs" element={<Dialogs />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/news" element={<News />} />
+                        <Route path="/music" element={<Music />} />
                     </Routes>
                 </div>
             </div>
