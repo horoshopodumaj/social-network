@@ -10,7 +10,7 @@ const Navbar = () => {
                 <a href="/dialogs">Messages</a>
             </div>
             <div className={s.item}>
-                <a>News</a>
+                <a href="/news">News</a>
             </div>
             <div className={s.item}>
                 <a>Music</a>
