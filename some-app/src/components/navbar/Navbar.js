@@ -16,7 +16,7 @@ const Navbar = () => {
             </div>
             <div className={s.item}>
                 <NavLink
-                    to="/dialogs"
+                    to="/dialogs/*"
                     className={({ isActive }) =>
                         isActive ? `${s.activeLink}` : ""
                     }
