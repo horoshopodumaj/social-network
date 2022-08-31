@@ -19,7 +19,11 @@ const MyPosts = () => {
             </div>
             <div className={s.posts}>
                 {postsData.map((item) => (
-                    <Post message={item.message} likesCount={item.likesCount} />
+                    <Post
+                        message={item.message}
+                        likesCount={item.likesCount}
+                        key={item.id}
+                    />
                 ))}
             </div>
         </div>
