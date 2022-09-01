@@ -1,6 +1,6 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 2fr 5fr;
 }
 
 .dialogsItems {
@@ -20,9 +20,26 @@
 
 .messages {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .img_message {
     width: 50px;
     border-radius: 50%;
+}
+
+.message {
+    flex: 1;
+}
+.send_message {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 100%;
+}
+
+.send_text {
+    width: 100%;
+    margin-right: 15px;
 }
