@@ -2,12 +2,13 @@ import Post from "./post/Post";
 import React from "react";
 import s from "./MyPosts.module.css";
 
-const MyPosts = ({ state }) => {
+const MyPosts = ({ state, addPost }) => {
     let newPostElement = React.createRef();
 
-    let addPost = () => {
+    let addPostPage = () => {
         let text = newPostElement.current.value;
-        console.log(text);
+        addPost(text);
+        console.log(state);
     };
 
     return (
@@ -18,7 +19,7 @@ const MyPosts = ({ state }) => {
                     <textarea ref={newPostElement}></textarea>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add post</button>
+                    <button onClick={addPostPage}>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>
