@@ -1,7 +1,7 @@
 import Post from "./post/Post";
 import s from "./MyPosts.module.css";
 
-const MyPosts = ({ postsData }) => {
+const MyPosts = ({ state }) => {
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
@@ -14,7 +14,7 @@ const MyPosts = ({ postsData }) => {
                 </div>
             </div>
             <div className={s.posts}>
-                {postsData.map((item) => (
+                {state.profilePage.postsData.map((item) => (
                     <Post
                         message={item.message}
                         likesCount={item.likesCount}
