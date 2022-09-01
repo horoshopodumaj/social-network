@@ -14,7 +14,7 @@ const MyPosts = ({ state }) => {
                 </div>
             </div>
             <div className={s.posts}>
-                {state.profilePage.postsData.map((item) => (
+                {state.postsData.map((item) => (
                     <Post
                         message={item.message}
                         likesCount={item.likesCount}
