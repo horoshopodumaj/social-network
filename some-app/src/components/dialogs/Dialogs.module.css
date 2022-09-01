@@ -7,10 +7,22 @@
     padding: 10px;
 }
 
+.dialog {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
 .dialog.active {
     color: gold;
 }
 
 .messages {
     padding: 10px;
+}
+
+.img_message {
+    width: 50px;
+    border-radius: 50%;
 }
