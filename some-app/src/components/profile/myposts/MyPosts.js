@@ -8,7 +8,7 @@ const MyPosts = ({ state, addPost }) => {
     let addPostPage = () => {
         let text = newPostElement.current.value;
         addPost(text);
-        console.log(state);
+        newPostElement.current.value = "";
     };
 
     return (
