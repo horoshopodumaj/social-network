@@ -8,7 +8,7 @@ import News from "./components/news/News";
 import Music from "./components/music/Music";
 import Settings from "./components/settings/Settings";
 
-const App = ({ state, addPost }) => {
+const App = ({ state, addPost, updateNewPostText }) => {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -26,6 +26,7 @@ const App = ({ state, addPost }) => {
                                 <Profile
                                     state={state.profilePage}
                                     addPost={addPost}
+                                    updateNewPostText={updateNewPostText}
                                 />
                             }
                         />
