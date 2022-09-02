@@ -3,13 +3,18 @@ import DialogItem from "./dialogItem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
-const Dialogs = ({ state }) => {
+const Dialogs = ({ state, addMessage, updateNewMessage }) => {
     let newMessageElement = React.createRef();
 
-    let addMessage = () => {
-        let newMessage = newMessageElement.current.value;
-        console.log(newMessage);
+    let addMessageText = () => {
+        addMessage();
     };
+
+    let onChangeMessage = () => {
+        let newMessage = newMessageElement.current.value;
+        updateNewMessage(newMessage);
+    };
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
@@ -23,10 +28,12 @@ const Dialogs = ({ state }) => {
                 ))}
                 <div className={s.send_message}>
                     <textarea
+                        onChange={onChangeMessage}
                         ref={newMessageElement}
                         className={s.send_text}
+                        value={state.nextMessageText}
                     ></textarea>
-                    <button onClick={addMessage}>Send</button>
+                    <button onClick={addMessageText}>Send</button>
                 </div>
             </div>
         </div>
