@@ -26,41 +26,41 @@ let store = {
             ],
         },
     },
+    _callSubscruber() {
+        console.log("State changed");
+    },
+
     getState() {
         return this._state;
-    },
-    addPost() {
-        let nextPost = {
-            id: 3,
-            message: this._state.profilePage.nextPostText,
-            likesCount: 0,
-        };
-        this._state.profilePage.postsData.push(nextPost);
-        this._callSubscruber(this._state);
-        this.updateNewPostText("");
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.nextPostText = newText;
-        this._callSubscruber(this._state);
-    },
-    addMessage() {
-        let nextMessage = {
-            message: this._state.dialogsPage.nextMessageText,
-            id: 4,
-        };
-        this._state.dialogsPage.messagesData.push(nextMessage);
-        this._callSubscruber(this._state);
-        this.updateNewMessage("");
-    },
-    updateNewMessage(newMessage) {
-        this._state.dialogsPage.nextMessageText = newMessage;
-        this._callSubscruber(this._state);
     },
     subscribe(observer) {
         this._callSubscruber = observer;
     },
-    _callSubscruber() {
-        console.log("State changed");
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            let nextPost = {
+                id: 3,
+                message: this._state.profilePage.nextPostText,
+                likesCount: 0,
+            };
+            this._state.profilePage.postsData.push(nextPost);
+            this._callSubscruber(this._state);
+            this.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: "" });
+        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state.profilePage.nextPostText = action.newText;
+            this._callSubscruber(this._state);
+        } else if (action.type === "ADD-MESSAGE") {
+            let nextMessage = {
+                message: this._state.dialogsPage.nextMessageText,
+                id: 4,
+            };
+            this._state.dialogsPage.messagesData.push(nextMessage);
+            this._callSubscruber(this._state);
+            this.dispatch({ type: "UPDATE-NEW-MESSAGE", newMessage: "" });
+        } else if (action.type === "UPDATE-NEW-MESSAGE") {
+            this._state.dialogsPage.nextMessageText = action.newMessage;
+            this._callSubscruber(this._state);
+        }
     },
 };
 

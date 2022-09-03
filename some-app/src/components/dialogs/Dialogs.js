@@ -3,16 +3,17 @@ import DialogItem from "./dialogItem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
-const Dialogs = ({ state, addMessage, updateNewMessage }) => {
+const Dialogs = ({ state, dispatch }) => {
     let newMessageElement = React.createRef();
 
     let addMessageText = () => {
-        addMessage();
+        dispatch({ type: "ADD-MESSAGE" });
     };
 
     let onChangeMessage = () => {
         let newMessage = newMessageElement.current.value;
-        updateNewMessage(newMessage);
+        let action = { type: "UPDATE-NEW-MESSAGE", newMessage: newMessage };
+        dispatch(action);
     };
 
     return (

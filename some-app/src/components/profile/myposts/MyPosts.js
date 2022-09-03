@@ -2,16 +2,17 @@ import Post from "./post/Post";
 import React from "react";
 import s from "./MyPosts.module.css";
 
-const MyPosts = ({ state, addPost, nextPostText, updateNewPostText }) => {
+const MyPosts = ({ state, dispatch }) => {
     let newPostElement = React.createRef();
 
     let addPostPage = () => {
-        addPost();
+        dispatch({ type: "ADD-POST" });
     };
 
     let onChangePost = () => {
         let text = newPostElement.current.value;
-        updateNewPostText(text);
+        let action = { type: "UPDATE-NEW-POST-TEXT", newText: text };
+        dispatch(action);
     };
 
     return (
@@ -22,7 +23,7 @@ const MyPosts = ({ state, addPost, nextPostText, updateNewPostText }) => {
                     <textarea
                         onChange={onChangePost}
                         ref={newPostElement}
-                        value={nextPostText}
+                        value={state.nextPostText}
                     />
                 </div>
                 <div>
