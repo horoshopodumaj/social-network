@@ -77,4 +77,17 @@ export let updatenewPostTextActionCreator = (text) => {
     };
 };
 
+export let addMessageActionCreator = () => {
+    return {
+        type: "ADD-MESSAGE",
+    };
+};
+
+export let updateNewMessageActionCreator = (newMessage) => {
+    return {
+        type: "UPDATE-NEW-MESSAGE",
+        newMessage: newMessage,
+    };
+};
+
 export default store;
