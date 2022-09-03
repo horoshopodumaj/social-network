@@ -1,3 +1,8 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
+
 let store = {
     _state: {
         profilePage: {
@@ -37,7 +42,7 @@ let store = {
         this._callSubscruber = observer;
     },
     dispatch(action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             let nextPost = {
                 id: 3,
                 message: this._state.profilePage.nextPostText,
@@ -46,10 +51,10 @@ let store = {
             this._state.profilePage.postsData.push(nextPost);
             this._callSubscruber(this._state);
             this.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: "" });
-        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.nextPostText = action.newText;
             this._callSubscruber(this._state);
-        } else if (action.type === "ADD-MESSAGE") {
+        } else if (action.type === ADD_MESSAGE) {
             let nextMessage = {
                 message: this._state.dialogsPage.nextMessageText,
                 id: 4,
@@ -57,7 +62,7 @@ let store = {
             this._state.dialogsPage.messagesData.push(nextMessage);
             this._callSubscruber(this._state);
             this.dispatch({ type: "UPDATE-NEW-MESSAGE", newMessage: "" });
-        } else if (action.type === "UPDATE-NEW-MESSAGE") {
+        } else if (action.type === UPDATE_NEW_MESSAGE) {
             this._state.dialogsPage.nextMessageText = action.newMessage;
             this._callSubscruber(this._state);
         }
@@ -66,26 +71,26 @@ let store = {
 
 export let addPostActionCreator = () => {
     return {
-        type: "ADD-POST",
+        type: ADD_POST,
     };
 };
 
 export let updatenewPostTextActionCreator = (text) => {
     return {
-        type: "UPDATE-NEW-POST-TEXT",
+        type: UPDATE_NEW_POST_TEXT,
         newText: text,
     };
 };
 
 export let addMessageActionCreator = () => {
     return {
-        type: "ADD-MESSAGE",
+        type: ADD_MESSAGE,
     };
 };
 
 export let updateNewMessageActionCreator = (newMessage) => {
     return {
-        type: "UPDATE-NEW-MESSAGE",
+        type: UPDATE_NEW_MESSAGE,
         newMessage: newMessage,
     };
 };
