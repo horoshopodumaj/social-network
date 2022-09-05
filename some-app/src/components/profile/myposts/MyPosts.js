@@ -7,14 +7,12 @@ import {
 } from "../../../redux/state";
 
 const MyPosts = ({ state, dispatch }) => {
-    let newPostElement = React.createRef();
-
     let addPostPage = () => {
         dispatch(addPostActionCreator());
     };
 
-    let onChangePost = () => {
-        let text = newPostElement.current.value;
+    let onChangePost = (event) => {
+        let text = event.target.value;
         dispatch(updatenewPostTextActionCreator(text));
     };
 
@@ -25,7 +23,6 @@ const MyPosts = ({ state, dispatch }) => {
                 <div>
                     <textarea
                         onChange={onChangePost}
-                        ref={newPostElement}
                         value={state.nextPostText}
                     />
                 </div>
