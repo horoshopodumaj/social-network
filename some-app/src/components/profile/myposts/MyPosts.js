@@ -4,7 +4,7 @@ import s from "./MyPosts.module.css";
 import {
     addPostActionCreator,
     updatenewPostTextActionCreator,
-} from "../../../redux/state";
+} from "../../../redux/profile_reducer";
 
 const MyPosts = ({ state, dispatch }) => {
     let addPostPage = () => {

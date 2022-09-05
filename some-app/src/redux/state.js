@@ -1,3 +1,5 @@
+import profileReducer from "./profile_reducer";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const ADD_MESSAGE = "ADD-MESSAGE";
@@ -42,19 +44,14 @@ let store = {
         this._callSubscruber = observer;
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let nextPost = {
-                id: 3,
-                message: this._state.profilePage.nextPostText,
-                likesCount: 0,
-            };
-            this._state.profilePage.postsData.push(nextPost);
-            this._callSubscruber(this._state);
-            this.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: "" });
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.nextPostText = action.newText;
-            this._callSubscruber(this._state);
-        } else if (action.type === ADD_MESSAGE) {
+        this._state.profilePage = profileReducer(
+            this._state.profilePage,
+            action
+        );
+
+        this._callSubscruber(this._state);
+
+        if (action.type === ADD_MESSAGE) {
             let nextMessage = {
                 message: this._state.dialogsPage.nextMessageText,
                 id: 4,
@@ -67,19 +64,6 @@ let store = {
             this._callSubscruber(this._state);
         }
     },
-};
-
-export let addPostActionCreator = () => {
-    return {
-        type: ADD_POST,
-    };
-};
-
-export let updatenewPostTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    };
 };
 
 export let addMessageActionCreator = () => {
