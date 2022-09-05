@@ -1,3 +1,4 @@
+import dialogsReducer from "./dialogs_reducer";
 import profileReducer from "./profile_reducer";
 
 const ADD_POST = "ADD-POST";
@@ -49,34 +50,13 @@ let store = {
             action
         );
 
+        this._state.dialogsPage = dialogsReducer(
+            this._state.dialogsPage,
+            action
+        );
+
         this._callSubscruber(this._state);
-
-        if (action.type === ADD_MESSAGE) {
-            let nextMessage = {
-                message: this._state.dialogsPage.nextMessageText,
-                id: 4,
-            };
-            this._state.dialogsPage.messagesData.push(nextMessage);
-            this._callSubscruber(this._state);
-            this.dispatch({ type: "UPDATE-NEW-MESSAGE", newMessage: "" });
-        } else if (action.type === UPDATE_NEW_MESSAGE) {
-            this._state.dialogsPage.nextMessageText = action.newMessage;
-            this._callSubscruber(this._state);
-        }
     },
-};
-
-export let addMessageActionCreator = () => {
-    return {
-        type: ADD_MESSAGE,
-    };
-};
-
-export let updateNewMessageActionCreator = (newMessage) => {
-    return {
-        type: UPDATE_NEW_MESSAGE,
-        newMessage: newMessage,
-    };
 };
 
 export default store;
