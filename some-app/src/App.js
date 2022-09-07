@@ -9,7 +9,6 @@ import Settings from "./components/settings/Settings";
 import DialogsContainer from "./components/dialogs/Dialogs.container";
 
 const App = (props) => {
-    // debugger;
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -19,12 +18,9 @@ const App = (props) => {
                     <Routes>
                         <Route
                             path="/dialogs/*"
-                            element={<DialogsContainer store={props.store} />}
+                            element={<DialogsContainer />}
                         />
-                        <Route
-                            path="/profile"
-                            element={<Profile store={props.store} />}
-                        />
+                        <Route path="/profile" element={<Profile />} />
                         <Route path="/news" element={<News />} />
                         <Route path="/music" element={<Music />} />
                         <Route path="/settings" element={<Settings />} />
