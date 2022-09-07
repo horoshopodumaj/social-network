@@ -16,7 +16,7 @@ let mapDispatchToProps = (dispatch) => {
         addPostPage: () => {
             dispatch(addPostActionCreator());
         },
-        addPostPage: (text) => {
+        addChangePost: (text) => {
             dispatch(updatenewPostTextActionCreator(text));
         },
     };
