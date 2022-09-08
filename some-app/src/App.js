@@ -21,6 +21,7 @@ const App = (props) => {
                             element={<DialogsContainer />}
                         />
                         <Route path="/profile" element={<Profile />} />
+                        <Route path="/users" element={<div>users</div>} />
                         <Route path="/news" element={<News />} />
                         <Route path="/music" element={<Music />} />
                         <Route path="/settings" element={<Settings />} />
