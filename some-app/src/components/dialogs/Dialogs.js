@@ -18,12 +18,12 @@ const Dialogs = (props) => {
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {state.dialogsData.map((item) => (
-                    <DialogItem name={item.name} id={item.id} />
+                    <DialogItem name={item.name} id={item.id} key={item.id} />
                 ))}
             </div>
             <div className={s.messages}>
                 {state.messagesData.map((item) => (
-                    <Message message={item.message} />
+                    <Message message={item.message} key={item.id} />
                 ))}
                 <div className={s.send_message}>
                     <textarea
