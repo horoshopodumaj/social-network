@@ -1,5 +1,6 @@
 import s from "./Users.module.css";
 import * as axios from "axios";
+import userPhoto from "../../assets/img/user.png";
 
 let Users = (props) => {
     if (props.users.length === 0) {
@@ -17,7 +18,11 @@ let Users = (props) => {
                         <div>
                             <img
                                 className={s.usersPhoto}
-                                src={user.photos.small}
+                                src={
+                                    user.photos.small != null
+                                        ? user.photos.small
+                                        : userPhoto
+                                }
                             />
                         </div>
                         <div>
