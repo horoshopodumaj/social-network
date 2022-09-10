@@ -13,8 +13,31 @@ class Users extends React.Component {
     }
 
     render() {
+        let pagesCount = Math.ceil(
+            this.props.totalUsersCount / this.props.pageSize
+        );
+
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
         return (
             <div>
+                <div>
+                    {pages.map((page) => {
+                        return (
+                            <button
+                                className={
+                                    this.props.currentPage === page &&
+                                    s.selectedPage
+                                }
+                            >
+                                {page}
+                            </button>
+                        );
+                    })}
+                </div>
                 {this.props.users.map((user) => (
                     <div key={user.id} className={s.user__card}>
                         <div className={s.user__avatar}>
