@@ -11,8 +11,20 @@ class Users extends React.Component {
             )
             .then((response) => {
                 this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount);
             });
     }
+
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
+            )
+            .then((response) => {
+                this.props.setUsers(response.data.items);
+            });
+    };
 
     render() {
         let pagesCount = Math.ceil(
@@ -24,10 +36,15 @@ class Users extends React.Component {
             pages.push(i);
         }
 
+        let curP = this.props.currentPage;
+        let curPF = curP - 5 < 0 ? 0 : curP - 5;
+        let curPL = curP + 5;
+        let slicedPages = pages.slice(curPF, curPL);
+
         return (
             <div>
                 <div>
-                    {pages.map((page) => {
+                    {slicedPages.map((page) => {
                         return (
                             <button
                                 className={
@@ -36,8 +53,7 @@ class Users extends React.Component {
                                         : ""
                                 }
                                 onClick={() => {
-                                    this.props.setCurrentPage(page);
-                                    console.log(page);
+                                    this.onPageChanged(page);
                                 }}
                             >
                                 {page}
