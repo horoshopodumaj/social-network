@@ -6,7 +6,9 @@ import userPhoto from "../../assets/img/user.png";
 class Users extends React.Component {
     componentDidMount() {
         axios
-            .get("https://social-network.samuraijs.com/api/1.0/users")
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+            )
             .then((response) => {
                 this.props.setUsers(response.data.items);
             });
@@ -29,9 +31,14 @@ class Users extends React.Component {
                         return (
                             <button
                                 className={
-                                    this.props.currentPage === page &&
-                                    s.selectedPage
+                                    this.props.currentPage === page
+                                        ? s.selectedPage
+                                        : ""
                                 }
+                                onClick={() => {
+                                    this.props.setCurrentPage(page);
+                                    console.log(page);
+                                }}
                             >
                                 {page}
                             </button>
