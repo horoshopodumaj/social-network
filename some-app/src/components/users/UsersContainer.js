@@ -10,7 +10,7 @@ import {
 import Users from "./Users";
 import React from "react";
 import * as axios from "axios";
-import preloader from "../../assets/img/preloader.svg";
+import Preloader from "../common/preloader/preloader";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -42,7 +42,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <>
-                {this.props.isFetching ? <img src={preloader} /> : null}
+                {this.props.isFetching ? <Preloader /> : null}
                 <Users
                     totalUsersCount={this.props.totalUsersCount}
                     pageSize={this.props.pageSize}
