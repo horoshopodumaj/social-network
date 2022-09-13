@@ -16,14 +16,14 @@ class ProfileContainer extends React.Component {
     render() {
         return (
             <div>
-                <Profile />
+                <Profile {...this.props} profile={this.props.profile} />
             </div>
         );
     }
 }
 
 let mapStateToProps = (state) => ({
-    a: 13,
+    profile: state.profilePage.profile,
 });
 
 export default connect(mapStateToProps, { setUserProfile })(ProfileContainer);

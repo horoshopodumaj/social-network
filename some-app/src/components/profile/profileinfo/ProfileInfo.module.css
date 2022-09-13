@@ -5,3 +5,10 @@
 .descriptionBlock {
     padding: 10px;
 }
+
+.user__name {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}

@@ -1,6 +1,10 @@
+import Preloader from "../../common/preloader/preloader";
 import s from "./ProfileInfo.module.css";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if (!props.profile) {
+        return <Preloader />;
+    }
     return (
         <div>
             <div>
@@ -9,7 +13,11 @@ const ProfileInfo = () => {
                     src="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"
                 />
             </div>
-            <div className={s.descriptionBlock}> ava + description</div>
+            <div className={s.user__name}>{props.profile.fullName}</div>
+            <div className={s.descriptionBlock}>
+                <img src={props.profile.photos.large} />
+                ava + description
+            </div>
         </div>
     );
 };
