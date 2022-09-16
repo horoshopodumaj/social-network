@@ -18,7 +18,6 @@ class HeaderContainer extends React.Component {
                         response.data.data.login
                     );
                 }
-                console.log(response);
             });
     }
     render() {
@@ -31,5 +30,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login,
 });
 
-// export default HeaderContainer;
 export default connect(mapStateToProps, { setAuthUserData })(HeaderContainer);
