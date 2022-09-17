@@ -71,7 +71,6 @@ let Users = (props) => {
                                                 ) {
                                                     props.unfollow(user.id);
                                                 }
-                                                console.log(response);
                                             });
                                     }}
                                 >
