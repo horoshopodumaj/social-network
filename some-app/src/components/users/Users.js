@@ -2,8 +2,7 @@ import React from "react";
 import s from "./Users.module.css";
 import userPhoto from "../../assets/img/user.png";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { followUser, unFollowUser } from "../../api/api";
+import { usersAPI } from "../../api/api";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -54,11 +53,13 @@ let Users = (props) => {
                             {user.followed ? (
                                 <button
                                     onClick={() => {
-                                        unFollowUser(user.id).then((data) => {
-                                            if (data.resultCode === 0) {
-                                                props.unfollow(user.id);
-                                            }
-                                        });
+                                        usersAPI
+                                            .unFollowUser(user.id)
+                                            .then((data) => {
+                                                if (data.resultCode === 0) {
+                                                    props.unfollow(user.id);
+                                                }
+                                            });
                                     }}
                                 >
                                     Unfollow
@@ -66,11 +67,13 @@ let Users = (props) => {
                             ) : (
                                 <button
                                     onClick={() => {
-                                        followUser(user.id).then((data) => {
-                                            if (data.resultCode === 0) {
-                                                props.follow(user.id);
-                                            }
-                                        });
+                                        usersAPI
+                                            .followUser(user.id)
+                                            .then((data) => {
+                                                if (data.resultCode === 0) {
+                                                    props.follow(user.id);
+                                                }
+                                            });
                                     }}
                                 >
                                     Follow
