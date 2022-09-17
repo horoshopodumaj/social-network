@@ -37,3 +37,9 @@ export const unFollowUser = (userId) => {
         )
         .then((response) => response.data);
 };
+
+export const setUser = (userId) => {
+    return axios
+        .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+        .then((response) => response.data);
+};
