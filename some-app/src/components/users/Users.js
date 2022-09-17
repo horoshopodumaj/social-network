@@ -3,6 +3,7 @@ import s from "./Users.module.css";
 import userPhoto from "../../assets/img/user.png";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { followUser, unFollowUser } from "../../api/api";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -53,25 +54,11 @@ let Users = (props) => {
                             {user.followed ? (
                                 <button
                                     onClick={() => {
-                                        axios
-                                            .delete(
-                                                `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                                                {
-                                                    withCredentials: true,
-                                                    headers: {
-                                                        "API-KEY":
-                                                            "b30385df-cbab-4ee6-b2bb-6a3acf152e39",
-                                                    },
-                                                }
-                                            )
-                                            .then((response) => {
-                                                if (
-                                                    response.data.resultCode ===
-                                                    0
-                                                ) {
-                                                    props.unfollow(user.id);
-                                                }
-                                            });
+                                        unFollowUser(user.id).then((data) => {
+                                            if (data.resultCode === 0) {
+                                                props.unfollow(user.id);
+                                            }
+                                        });
                                     }}
                                 >
                                     Unfollow
@@ -79,27 +66,11 @@ let Users = (props) => {
                             ) : (
                                 <button
                                     onClick={() => {
-                                        axios
-                                            .post(
-                                                `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                                                {},
-                                                {
-                                                    withCredentials: true,
-                                                    headers: {
-                                                        "API-KEY":
-                                                            "b30385df-cbab-4ee6-b2bb-6a3acf152e39",
-                                                    },
-                                                }
-                                            )
-                                            .then((response) => {
-                                                if (
-                                                    response.data.resultCode ===
-                                                    0
-                                                ) {
-                                                    props.follow(user.id);
-                                                }
-                                                console.log(response);
-                                            });
+                                        followUser(user.id).then((data) => {
+                                            if (data.resultCode === 0) {
+                                                props.follow(user.id);
+                                            }
+                                        });
                                     }}
                                 >
                                     Follow

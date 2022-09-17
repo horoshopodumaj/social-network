@@ -8,3 +8,32 @@ export const getUsers = (currentPage, pageSize) => {
         )
         .then((response) => response.data);
 };
+
+export const followUser = (userId) => {
+    return axios
+        .post(
+            `https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
+            {},
+            {
+                withCredentials: true,
+                headers: {
+                    "API-KEY": "b30385df-cbab-4ee6-b2bb-6a3acf152e39",
+                },
+            }
+        )
+        .then((response) => response.data);
+};
+
+export const unFollowUser = (userId) => {
+    return axios
+        .delete(
+            `https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
+            {
+                withCredentials: true,
+                headers: {
+                    "API-KEY": "b30385df-cbab-4ee6-b2bb-6a3acf152e39",
+                },
+            }
+        )
+        .then((response) => response.data);
+};
