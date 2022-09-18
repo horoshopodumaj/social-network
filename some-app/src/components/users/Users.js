@@ -52,13 +52,19 @@ let Users = (props) => {
                         <div>
                             {user.followed ? (
                                 <button
+                                    disabled={props.followingInProgress}
                                     onClick={() => {
+                                        //debugger;
+                                        props.toggleIsFollowingInProgress(true);
                                         usersAPI
                                             .unFollowUser(user.id)
                                             .then((data) => {
                                                 if (data.resultCode === 0) {
                                                     props.unfollow(user.id);
                                                 }
+                                                props.toggleIsFollowingInProgress(
+                                                    false
+                                                );
                                             });
                                     }}
                                 >
@@ -66,13 +72,19 @@ let Users = (props) => {
                                 </button>
                             ) : (
                                 <button
+                                    disabled={props.followingInProgress}
                                     onClick={() => {
+                                        //debugger;
+                                        props.toggleIsFollowingInProgress(true);
                                         usersAPI
                                             .followUser(user.id)
                                             .then((data) => {
                                                 if (data.resultCode === 0) {
                                                     props.follow(user.id);
                                                 }
+                                                props.toggleIsFollowingInProgress(
+                                                    false
+                                                );
                                             });
                                     }}
                                 >
