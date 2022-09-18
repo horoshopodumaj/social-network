@@ -52,10 +52,14 @@ let Users = (props) => {
                         <div>
                             {user.followed ? (
                                 <button
-                                    disabled={props.followingInProgress}
+                                    disabled={props.followingInProgress.some(
+                                        (id) => id === user.id
+                                    )}
                                     onClick={() => {
-                                        //debugger;
-                                        props.toggleIsFollowingInProgress(true);
+                                        props.toggleIsFollowingInProgress(
+                                            true,
+                                            user.id
+                                        );
                                         usersAPI
                                             .unFollowUser(user.id)
                                             .then((data) => {
@@ -63,7 +67,8 @@ let Users = (props) => {
                                                     props.unfollow(user.id);
                                                 }
                                                 props.toggleIsFollowingInProgress(
-                                                    false
+                                                    false,
+                                                    user.id
                                                 );
                                             });
                                     }}
@@ -72,10 +77,14 @@ let Users = (props) => {
                                 </button>
                             ) : (
                                 <button
-                                    disabled={props.followingInProgress}
+                                    disabled={props.followingInProgress.some(
+                                        (id) => id === user.id
+                                    )}
                                     onClick={() => {
-                                        //debugger;
-                                        props.toggleIsFollowingInProgress(true);
+                                        props.toggleIsFollowingInProgress(
+                                            true,
+                                            user.id
+                                        );
                                         usersAPI
                                             .followUser(user.id)
                                             .then((data) => {
@@ -83,7 +92,8 @@ let Users = (props) => {
                                                     props.follow(user.id);
                                                 }
                                                 props.toggleIsFollowingInProgress(
-                                                    false
+                                                    false,
+                                                    user.id
                                                 );
                                             });
                                     }}
