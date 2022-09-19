@@ -56,21 +56,7 @@ let Users = (props) => {
                                         (id) => id === user.id
                                     )}
                                     onClick={() => {
-                                        props.toggleIsFollowingInProgress(
-                                            true,
-                                            user.id
-                                        );
-                                        usersAPI
-                                            .unFollowUser(user.id)
-                                            .then((data) => {
-                                                if (data.resultCode === 0) {
-                                                    props.unfollow(user.id);
-                                                }
-                                                props.toggleIsFollowingInProgress(
-                                                    false,
-                                                    user.id
-                                                );
-                                            });
+                                        props.unfollow(user.id);
                                     }}
                                 >
                                     Unfollow
@@ -81,21 +67,7 @@ let Users = (props) => {
                                         (id) => id === user.id
                                     )}
                                     onClick={() => {
-                                        props.toggleIsFollowingInProgress(
-                                            true,
-                                            user.id
-                                        );
-                                        usersAPI
-                                            .followUser(user.id)
-                                            .then((data) => {
-                                                if (data.resultCode === 0) {
-                                                    props.follow(user.id);
-                                                }
-                                                props.toggleIsFollowingInProgress(
-                                                    false,
-                                                    user.id
-                                                );
-                                            });
+                                        props.follow(user.id);
                                     }}
                                 >
                                     Follow
