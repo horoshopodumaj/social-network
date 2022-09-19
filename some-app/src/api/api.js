@@ -29,4 +29,8 @@ export const usersAPI = {
             .get(`profile/${userId}`)
             .then((response) => response.data);
     },
+
+    setAuthUser() {
+        return instance.get("auth/me").then((response) => response.data);
+    },
 };
