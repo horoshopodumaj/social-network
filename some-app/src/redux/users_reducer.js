@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -14,7 +16,6 @@ let initialState = {
     isFetching: true,
     followingInProgress: [],
 };
-
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
@@ -120,6 +121,17 @@ export const toggleIsFollowingInProgress = (followingInProgress, userId) => {
         type: TOGGLE_IS_FOLLOWING_IN_PROGRESS,
         followingInProgress,
         userId,
+    };
+};
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize).then((data) => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        });
     };
 };
 
