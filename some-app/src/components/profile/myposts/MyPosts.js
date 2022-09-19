@@ -3,12 +3,12 @@ import s from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
     let onPostPage = () => {
-        props.addPostPage();
+        props.addPost();
     };
 
     let onChangePost = (event) => {
         let text = event.target.value;
-        props.addChangePost(text);
+        props.updatenewPostText(text);
     };
 
     return (
