@@ -3,7 +3,6 @@ import {
     follow,
     getUsers,
     setCurrentPage,
-    toggleIsFollowingInProgress,
     unfollow,
 } from "../../redux/users_reducer";
 import Users from "./Users";
@@ -32,9 +31,6 @@ class UsersContainer extends React.Component {
                     follow={this.props.follow}
                     unfollow={this.props.unfollow}
                     followingInProgress={this.props.followingInProgress}
-                    toggleIsFollowingInProgress={
-                        this.props.toggleIsFollowingInProgress
-                    }
                 />
             </>
         );
@@ -56,6 +52,5 @@ export default connect(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,
-    toggleIsFollowingInProgress,
     getUsers,
 })(UsersContainer);
