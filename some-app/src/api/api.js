@@ -29,8 +29,10 @@ export const usersAPI = {
             .get(`profile/${userId}`)
             .then((response) => response.data);
     },
+};
 
-    setAuthUser() {
+export const authAPI = {
+    me() {
         return instance.get("auth/me").then((response) => response.data);
     },
 };

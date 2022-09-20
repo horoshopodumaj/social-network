@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setUser } from "../../redux/profile_reducer";
+import { getUserPofile } from "../../redux/profile_reducer";
 import Profile from "./Profile";
 import { useParams } from "react-router-dom";
 
@@ -10,7 +10,7 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = 2;
         }
-        this.props.setUser(userId);
+        this.props.getUserPofile(userId);
     }
     render() {
         return (
@@ -32,6 +32,6 @@ export function withRouter(ProfileContainer) {
     };
 }
 
-export default connect(mapStateToProps, { setUser })(
+export default connect(mapStateToProps, { getUserPofile })(
     withRouter(ProfileContainer)
 );
